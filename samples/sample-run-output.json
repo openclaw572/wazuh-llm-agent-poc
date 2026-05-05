@@ -1,0 +1,206 @@
+[
+  {
+    "alert": {
+      "rule_id": "5712",
+      "rule_level": 12,
+      "rule_description": "sshd: authentication failed from same source ip",
+      "agent_name": "ubuntu-endpoint",
+      "agent_id": "001",
+      "srcip": "203.0.113.10",
+      "user": "root",
+      "process": null,
+      "file_path": null,
+      "timestamp": "2026-05-05T04:00:00.000+0000",
+      "raw": {
+        "timestamp": "2026-05-05T04:00:00.000+0000",
+        "rule": {
+          "level": 12,
+          "description": "sshd: authentication failed from same source ip",
+          "id": "5712"
+        },
+        "agent": {
+          "id": "001",
+          "name": "ubuntu-endpoint"
+        },
+        "data": {
+          "srcip": "203.0.113.10",
+          "srcuser": "root"
+        },
+        "full_log": "May 5 04:00:00 host sshd[1234]: Failed password for root from 203.0.113.10 port 4444 ssh2"
+      }
+    },
+    "llm_verdict": {
+      "false_positive_likelihood": "low",
+      "risk_level": "high",
+      "reason": "Rule level 12: sshd: authentication failed from same source ip",
+      "needs_defense": true,
+      "recommended_actions": [
+        {
+          "type": "notify_admin",
+          "target": "security-admin",
+          "reason": "High-risk Wazuh alert requires human review"
+        },
+        {
+          "type": "create_incident",
+          "target": "wazuh-rule-5712",
+          "reason": "Create audit trail"
+        },
+        {
+          "type": "block_ip",
+          "target": "203.0.113.10",
+          "reason": "Source IP associated with high-risk auth alert"
+        }
+      ],
+      "confidence": 0.62
+    },
+    "policy_decision": {
+      "allowed_actions": [
+        {
+          "type": "notify_admin",
+          "target": "security-admin",
+          "reason": "High-risk Wazuh alert requires human review",
+          "requires_human_approval": true
+        },
+        {
+          "type": "create_incident",
+          "target": "wazuh-rule-5712",
+          "reason": "Create audit trail",
+          "requires_human_approval": true
+        }
+      ],
+      "denied_actions": [
+        {
+          "type": "block_ip",
+          "target": "203.0.113.10",
+          "reason": "Source IP associated with high-risk auth alert",
+          "requires_human_approval": true,
+          "deny_reason": "Active defense denied due to low confidence"
+        }
+      ],
+      "reasons": [
+        "Confidence 0.62 below policy min 0.7"
+      ]
+    },
+    "admin_approved": false,
+    "response_result": {
+      "executed": [
+        {
+          "type": "notify_admin",
+          "target": "security-admin",
+          "reason": "High-risk Wazuh alert requires human review",
+          "requires_human_approval": true,
+          "status": "logged"
+        },
+        {
+          "type": "create_incident",
+          "target": "wazuh-rule-5712",
+          "reason": "Create audit trail",
+          "requires_human_approval": true,
+          "status": "logged"
+        }
+      ],
+      "skipped": []
+    }
+  },
+  {
+    "alert": {
+      "rule_id": "550",
+      "rule_level": 14,
+      "rule_description": "Possible malware file integrity event",
+      "agent_name": "ubuntu-endpoint",
+      "agent_id": "001",
+      "srcip": null,
+      "user": null,
+      "process": null,
+      "file_path": "/tmp/eicar.com",
+      "timestamp": "2026-05-05T04:02:00.000+0000",
+      "raw": {
+        "timestamp": "2026-05-05T04:02:00.000+0000",
+        "rule": {
+          "level": 14,
+          "description": "Possible malware file integrity event",
+          "id": "550"
+        },
+        "agent": {
+          "id": "001",
+          "name": "ubuntu-endpoint"
+        },
+        "syscheck": {
+          "path": "/tmp/eicar.com"
+        }
+      }
+    },
+    "llm_verdict": {
+      "false_positive_likelihood": "medium",
+      "risk_level": "critical",
+      "reason": "Rule level 14: Possible malware file integrity event",
+      "needs_defense": true,
+      "recommended_actions": [
+        {
+          "type": "notify_admin",
+          "target": "security-admin",
+          "reason": "High-risk Wazuh alert requires human review"
+        },
+        {
+          "type": "create_incident",
+          "target": "wazuh-rule-550",
+          "reason": "Create audit trail"
+        },
+        {
+          "type": "quarantine_file",
+          "target": "/tmp/eicar.com",
+          "reason": "Suspicious file path present in high-risk alert"
+        }
+      ],
+      "confidence": 0.62
+    },
+    "policy_decision": {
+      "allowed_actions": [
+        {
+          "type": "notify_admin",
+          "target": "security-admin",
+          "reason": "High-risk Wazuh alert requires human review",
+          "requires_human_approval": true
+        },
+        {
+          "type": "create_incident",
+          "target": "wazuh-rule-550",
+          "reason": "Create audit trail",
+          "requires_human_approval": true
+        }
+      ],
+      "denied_actions": [
+        {
+          "type": "quarantine_file",
+          "target": "/tmp/eicar.com",
+          "reason": "Suspicious file path present in high-risk alert",
+          "requires_human_approval": true,
+          "deny_reason": "Active defense denied due to low confidence"
+        }
+      ],
+      "reasons": [
+        "Confidence 0.62 below policy min 0.7"
+      ]
+    },
+    "admin_approved": false,
+    "response_result": {
+      "executed": [
+        {
+          "type": "notify_admin",
+          "target": "security-admin",
+          "reason": "High-risk Wazuh alert requires human review",
+          "requires_human_approval": true,
+          "status": "logged"
+        },
+        {
+          "type": "create_incident",
+          "target": "wazuh-rule-550",
+          "reason": "Create audit trail",
+          "requires_human_approval": true,
+          "status": "logged"
+        }
+      ],
+      "skipped": []
+    }
+  }
+]

@@ -1,0 +1,3 @@
+{"timestamp":"2026-05-05T04:00:00.000+0000","rule":{"level":12,"description":"sshd: authentication failed from same source ip","id":"5712"},"agent":{"id":"001","name":"ubuntu-endpoint"},"data":{"srcip":"203.0.113.10","srcuser":"root"},"full_log":"May 5 04:00:00 host sshd[1234]: Failed password for root from 203.0.113.10 port 4444 ssh2"}
+{"timestamp":"2026-05-05T04:01:00.000+0000","rule":{"level":7,"description":"Normal sudo command","id":"5402"},"agent":{"id":"001","name":"ubuntu-endpoint"},"data":{"srcuser":"alice"}}
+{"timestamp":"2026-05-05T04:02:00.000+0000","rule":{"level":14,"description":"Possible malware file integrity event","id":"550"},"agent":{"id":"001","name":"ubuntu-endpoint"},"syscheck":{"path":"/tmp/eicar.com"}}

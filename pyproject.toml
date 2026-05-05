@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wazuh-llm-poc"
+version = "0.1.0"
+description = "Wazuh alert JSON -> LLM analyzer -> policy engine -> human-approved response agent PoC"
+requires-python = ">=3.10"
+dependencies = ["pyyaml", "requests"]
+
+[project.scripts]
+wazuh-llm-poc = "wazuh_llm_poc.main:main"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
