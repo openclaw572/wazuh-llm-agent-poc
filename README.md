@@ -368,19 +368,21 @@ Run sample flow:
 wazuh-llm-poc --config config/poc.yaml --alerts samples/alerts.json --once
 ```
 
-## CI
+## CI Template
 
-GitHub Actions runs:
+A GitHub Actions workflow template is included at:
+
+```text
+docs/templates/github-actions-ci.yml
+```
+
+It runs:
 
 1. Package install.
 2. Unit tests on Python 3.10, 3.11, and 3.12.
 3. Sample PoC CLI flow.
 
-Workflow file:
-
-```text
-.github/workflows/ci.yml
-```
+To enable it, copy it to `.github/workflows/ci.yml` in a GitHub-authenticated environment whose token has the `workflow` scope.
 
 ## Production Hardening Ideas
 

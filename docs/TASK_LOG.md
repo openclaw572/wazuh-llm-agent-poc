@@ -44,7 +44,7 @@ Defense actions must not run directly from LLM output. The administrator must be
    - lab-only auto approval
 11. Added sample Wazuh alert data.
 12. Added unit tests.
-13. Added GitHub Actions CI.
+13. Added GitHub Actions CI template.
 14. Added full README and implementation plan.
 
 ## Files Created
@@ -53,7 +53,7 @@ Defense actions must not run directly from LLM output. The administrator must be
 README.md
 pyproject.toml
 .gitignore
-.github/workflows/ci.yml
+docs/templates/github-actions-ci.yml
 config/poc.yaml
 docs/implementation-plan.md
 docs/OBSERVE.md
